@@ -19,9 +19,10 @@ For more info kindly visit the official [Zatca Docs.](https://zatca.gov.sa/en/E-
 For full example of the code, kindly have a look here [example](https://pub.dev/packages/zatca_2_invoice_generator/example) folder.
 
 # Code result
-![Screenshot 2025-01-26 at 5 25 23 AM](https://github.com/user-attachments/assets/d17c6b60-01d0-47b7-b866-a017dfa10327)
+![Alt Text](assets/code_result.png)
+
 # Scan result
-![WhatsApp Image 2025-01-26 at 05 25 15](https://github.com/user-attachments/assets/ec5ae9fb-52c9-4626-9d36-7fdc0cb6f7fd)
+![Alt Text](assets/scan_result.jpeg)
 
 ### Initialize zacta in main.dart:
 
