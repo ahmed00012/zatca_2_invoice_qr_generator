@@ -15,7 +15,7 @@ For more info kindly visit the official [Zatca Docs.](https://zatca.gov.sa/en/E-
 
 ## Usage
 
-For full example of the code, kindly have a look here [/example](https://pub.dev/packages/zatca_fatoora_flutter/example) folder.
+For full example of the code, kindly have a look here [/example](https://pub.dev/packages/zatca_2_invoice_qr_generator/example) folder.
 
 # Code result
 ![Screenshot 2025-01-26 at 5 25 23 AM](https://github.com/user-attachments/assets/d17c6b60-01d0-47b7-b866-a017dfa10327)
