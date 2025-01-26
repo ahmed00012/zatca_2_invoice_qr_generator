@@ -4,17 +4,17 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:qr_bar_code/qr/qr.dart';
 import 'package:zatca_2_invoice_generator/zatca_2_invoice_generator.dart';
- 
+
 class Zatca2InvoiceQrGenerator extends StatelessWidget {
   const Zatca2InvoiceQrGenerator({
     super.key,
     required this.qrDataModel,
-
     this.backgroundColor = Colors.transparent,
     this.size = 200,
   });
 
-  final QrDataModel qrDataModel; 
+  final QrDataModel qrDataModel;
+
 // Certificate authority signature
   final double size; // Size of the QR code
   final Color backgroundColor; // Background color of the QR code
@@ -31,7 +31,7 @@ class Zatca2InvoiceQrGenerator extends StatelessWidget {
       6: qrDataModel.invoiceHash,
       7: qrDataModel.digitalSignature,
       8: qrDataModel.publicKey,
-      9: qrDataModel.certificateSignature,
+      // 9: qrDataModel.certificateSignature,
     };
 
     // Generate TLV string
@@ -87,10 +87,16 @@ class Zatca2InvoiceQrGenerator extends StatelessWidget {
     return QRCode(
       data: _getQrCodeContent(),
       size: size,
-      eyeStyle: const QREyeStyle(
-        eyeShape: QREyeShape.square,
+      padding: EdgeInsets.all(7),
+      dataModuleStyle: QRDataModuleStyle(
         color: Colors.black,
+        dataModuleShape: QRDataModuleShape.square,
       ),
+      // eyeStyle: const QREyeStyle(
+      //   eyeShape: QREyeShape.square,
+      //
+      //   color: Colors.black,
+      // ),
       backgroundColor: backgroundColor,
     );
   }
