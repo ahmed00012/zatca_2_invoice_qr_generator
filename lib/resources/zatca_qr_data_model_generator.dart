@@ -77,8 +77,8 @@ class ZatcaManager {
             ),
           ),
       invoiceLines: invoiceLines,
-      taxAmount: '15.00',
-      totalAmount: '115.00',
+      taxAmount: totalVat,
+      totalAmount: totalWithVat,
     );
 
     final xmlString = generateZATCAXml(invoice);
