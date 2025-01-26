@@ -1,4 +1,4 @@
-## Zatca e-invoice (fatoora) QR code generator in Flutter
+## Zatca e-invoice (fatoora) Phase 2 QR code generator in Flutter
 
 ![images](https://github.com/user-attachments/assets/262ec074-05ed-468b-8868-87782d924409)
 
@@ -10,8 +10,9 @@ For more info kindly visit the official [Zatca Docs.](https://zatca.gov.sa/en/E-
 ## Features
 
 - Simple QR code
-- QR code with logo and custom styling
-- Custom QR code builder, so you can show your magic 🪄
+- Simple QR code generator
+- Generate QR code from Zatca QR data model
+ 
 
 ## Usage
 
