@@ -8,3 +8,5 @@ enum InvoiceType {
   final String value;
   const InvoiceType(this.value);
 }
+
+enum InvoiceRelationType { b2b, b2c }

@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:zatca_2_invoice_generator/zatca_2_invoice_generator.dart';
 
 class ZatcaManager {
   ZatcaManager._();
+
   static ZatcaManager instance = ZatcaManager._();
   Supplier? _supplier;
   String? _privateKeyBase64;
@@ -28,6 +30,8 @@ class ZatcaManager {
   QrDataModel generateZatcaQrInit({
     required List<InvoiceLine> invoiceLines,
     required InvoiceType invoiceType,
+    InvoiceRelationType invoiceRelationType = InvoiceRelationType.b2c,
+    Customer? customer,
     required String issueDate,
     required String invoiceUUid,
     required String invoiceNumber,
@@ -43,7 +47,10 @@ class ZatcaManager {
       throw Exception(
           'Supplier, private key, certificate, seller name, and seller TRN must be initialized before generating the QR code.');
     }
-    
+    if (invoiceRelationType == InvoiceRelationType.b2b && customer == null) {
+      throw Exception(
+          'customer must be initialized before generating the QR code.');
+    }
     final invoice = InvoiceData(
       profileID: 'reporting:1.0',
       id: invoiceNumber,
@@ -56,18 +63,19 @@ class ZatcaManager {
       currencyCode: 'SAR',
       taxCurrencyCode: 'SAR',
       supplier: _supplier!,
-      customer: Customer(
-        companyID: ' ',
-        registrationName: ' ',
-        address: Address(
-          streetName: ' ',
-          buildingNumber: ' ',
-          citySubdivisionName: ' ',
-          cityName: ' ',
-          postalZone: ' ',
-          countryCode: ' ',
-        ),
-      ),
+      customer: customer ??
+          Customer(
+            companyID: ' ',
+            registrationName: ' ',
+            address: Address(
+              streetName: ' ',
+              buildingNumber: ' ',
+              citySubdivisionName: ' ',
+              cityName: ' ',
+              postalZone: ' ',
+              countryCode: ' ',
+            ),
+          ),
       invoiceLines: invoiceLines,
       taxAmount: '15.00',
       totalAmount: '115.00',

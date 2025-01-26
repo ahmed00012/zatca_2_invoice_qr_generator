@@ -53,7 +53,52 @@ void initZacta() {
 }
 ```
 ###   QR code Data Model:
+# note: for B2B Invoices 
+```dart
 
+final qrDataModel = ZatcaManager.instance.generateZatcaQrInit(
+    totalVat: "45.0",
+    totalWithVat: "300.0",
+    issueDate: "2024-01-17",
+    issueTime: "05:41:08",
+    invoiceUUid: "8e6000cf-1a98-4174-b3e7-b5d5954bc10d",
+    invoiceNumber: "INV0001",
+    invoiceLines: [
+      InvoiceLine(
+        id: '1',
+        quantity: '10',
+        unitCode: 'PCE',
+        lineExtensionAmount: '100.00',
+        itemName: 'Item 1',
+        taxPercent: '15',
+      ),
+      InvoiceLine(
+        id: '2',
+        quantity: '1',
+        unitCode: 'PCE',
+        lineExtensionAmount: '200.00',
+        itemName: 'Item 1',
+        taxPercent: '15',
+      ),
+    ],
+    invoiceType: ZatcaConstants.invoiceType,
+    invoiceRelationType: InvoiceRelationType.b2b,
+    customer: Customer(
+      companyID: ' serag sakr ',
+      registrationName: ' 87978',
+      address: Address(
+        streetName: ' ',
+        buildingNumber: ' ',
+        citySubdivisionName: ' ',
+        cityName: 'Alexandria ',
+        postalZone: ' ',
+        countryCode: ' ',
+      ),
+    )
+);
+
+```
+# note: for B2C Invoices 
 ```dart
         final qrDataModel = ZatcaManager.instance.generateZatcaQrInit(
     totalVat: "45.0",
@@ -81,6 +126,8 @@ void initZacta() {
       ),
     ],
     invoiceType: ZatcaConstants.invoiceType,
+  
+  
   );
 ```
 ### Simple QR code:
