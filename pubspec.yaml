@@ -1,0 +1,31 @@
+name: zatca_2_invoice_generator
+description: "Plugin for generating ZATCA 2 invoice QR code"
+version: 0.0.1
+homepage: https://github.com/seragsabrysakr/zatca_2_invoice_qr_generator
+repository: https://github.com/seragsabrysakr/zatca_2_invoice_qr_generator
+
+environment:
+  sdk: ^3.6.0
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.2
+  qr_bar_code: ^1.1.0
+  asn1lib: ^1.5.8
+  xml:
+  convert: ^3.1.0
+  crypto: ^3.0.0
+  pointycastle: ^3.0.1
+
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+
+
