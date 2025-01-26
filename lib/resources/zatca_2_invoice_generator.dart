@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qr_bar_code/qr/qr.dart';
 import 'package:zatca_2_invoice_generator/zatca_2_invoice_generator.dart';
 
@@ -84,6 +85,19 @@ class Zatca2InvoiceQrGenerator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Container(
+      height: size,
+      width: size,
+      child: PrettyQrView.data(
+        data: _getQrCodeContent(),
+        decoration: const PrettyQrDecoration(
+
+            // image: PrettyQrDecorationImage(
+            //   image: AssetImage('images/flutter.png'),
+            // ),
+            ),
+      ),
+    );
     return QRCode(
       data: _getQrCodeContent(),
       size: size,
@@ -92,11 +106,10 @@ class Zatca2InvoiceQrGenerator extends StatelessWidget {
         color: Colors.black,
         dataModuleShape: QRDataModuleShape.square,
       ),
-      // eyeStyle: const QREyeStyle(
-      //   eyeShape: QREyeShape.square,
-      //
-      //   color: Colors.black,
-      // ),
+      eyeStyle: const QREyeStyle(
+        eyeShape: QREyeShape.square,
+        color: Colors.black,
+      ),
       backgroundColor: backgroundColor,
     );
   }
