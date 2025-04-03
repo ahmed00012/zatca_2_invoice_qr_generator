@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:typed_data';
 
 import 'package:zatca_2_invoice_generator/zatca_2_invoice_generator.dart';
 
@@ -107,5 +108,60 @@ class ZatcaManager {
         publicKey: publicKey,
         certificateSignature: certificateSignature,
         invoiceData: invoice);
+  }
+
+  String getQrCodeContent(QrDataModel qrDataModel) {
+    Map<int, String> invoiceData = {
+      1: qrDataModel.sellerName,
+      2: qrDataModel.sellerTRN,
+      3: qrDataModel.issueDate,
+      4: qrDataModel.invoiceData.totalAmount,
+      5: qrDataModel.invoiceData.taxAmount,
+      6: qrDataModel.invoiceHash,
+      7: qrDataModel.digitalSignature,
+      8: qrDataModel.publicKey,
+    };
+
+    String tlvString = generateTlv(invoiceData);
+    final qrContent = utf8.encode(tlvToBase64(tlvString));
+    return String.fromCharCodes(qrContent);
+  }
+
+  String stringToHex(String input) {
+    return input.codeUnits
+        .map((unit) => unit.toRadixString(16).padLeft(2, '0'))
+        .join();
+  }
+
+  String generateTlv(Map<int, String> data) {
+    StringBuffer tlv = StringBuffer();
+
+    data.forEach((tag, value) {
+      String tagHex =
+          tag.toRadixString(16).padLeft(2, '0'); // Convert tag to hex
+      String valueHex = stringToHex(value); // Convert value to hex
+      String lengthHex =
+          value.length.toRadixString(16).padLeft(2, '0'); // Length in hex
+
+      // Concatenate tag, length, and value into the TLV structure
+      tlv.write(tagHex);
+      tlv.write(lengthHex);
+      tlv.write(valueHex);
+    });
+
+    return tlv.toString();
+  }
+
+  String tlvToBase64(String tlv) {
+    List<int> bytes = [];
+
+    for (int i = 0; i < tlv.length; i += 2) {
+      String hexStr = tlv.substring(i, i + 2); // Two hex characters at a time
+      int byte = int.parse(hexStr, radix: 16); // Parse as a byte
+      bytes.add(byte);
+    }
+
+    Uint8List byteArray = Uint8List.fromList(bytes);
+    return base64Encode(byteArray); // Convert to Base64
   }
 }

@@ -18,6 +18,9 @@ For more info kindly visit the official [Zatca Docs.](https://zatca.gov.sa/en/E-
 
 For full example of the code, kindly have a look here [example](https://pub.dev/packages/zatca_2_invoice_generator/example) folder.
 
+# Code result full
+![Alt Text](assets/full.png)
+
 # Code result
 ![Alt Text](assets/code_result.png)
 
@@ -135,10 +138,24 @@ final qrDataModel = ZatcaManager.instance.generateZatcaQrInit(
 ```dart
        Center(
           child: Zatca2InvoiceQrGenerator(qrDataModel: qrDataModel),
-        )
+        );
 ```
 
+### Can Get Content Only AS String
+```dart
+ final content = ZatcaManager.instance.getQrCodeContent(qrDataModel);
 
+```
+```dart
+         SizedBox(
+            height: 200,
+            width: 200,
+child: PrettyQrView.data(
+data: content,
+decoration: const PrettyQrDecoration(),
+),
+);
+```
 
 
 #### - Thanks for visiting here, hope you find this package useful if so then don't forget to give a like and star into the repo. Have a Bugs-free day 😉👨‍💻

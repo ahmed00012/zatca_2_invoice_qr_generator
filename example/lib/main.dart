@@ -57,8 +57,10 @@ class MyApp extends StatelessWidget {
     ],
     invoiceType: ZatcaConstants.invoiceType,
   );
+
   @override
   Widget build(BuildContext context) {
+    final content = ZatcaManager.instance.getQrCodeContent(qrDataModel);
     return MaterialApp(
       title: 'Zatca Phase 2 Demo',
       theme: ThemeData(
@@ -70,8 +72,35 @@ class MyApp extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: const Text('Zatca Phase 2 Demo'),
         ),
-        body: Center(
-          child: Zatca2InvoiceQrGenerator(qrDataModel: qrDataModel),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(
+              "Using Content Only",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(
+              height: 200,
+              width: 200,
+              child: PrettyQrView.data(
+                data: content,
+                decoration: const PrettyQrDecoration(),
+              ),
+            ),
+            Text(
+              "Using Full Widget",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+              ),
+            ),
+            Center(
+              child: Zatca2InvoiceQrGenerator(qrDataModel: qrDataModel),
+            ),
+          ],
         ),
       ),
     );
