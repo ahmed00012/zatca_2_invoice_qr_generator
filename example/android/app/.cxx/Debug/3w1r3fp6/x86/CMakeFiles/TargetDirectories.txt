@@ -1,0 +1,2 @@
+/Users/srag/Desktop/zatca_2_invoice_qr_generator/example/android/app/.cxx/Debug/3w1r3fp6/x86/CMakeFiles/edit_cache.dir
+/Users/srag/Desktop/zatca_2_invoice_qr_generator/example/android/app/.cxx/Debug/3w1r3fp6/x86/CMakeFiles/rebuild_cache.dir
