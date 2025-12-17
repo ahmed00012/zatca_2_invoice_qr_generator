@@ -12,13 +12,12 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-  qr_bar_code:
-    git: https://github.com/seragsabrysakr/qr_bar_code.git
+  qr_bar_code: ^2.0.0
   asn1lib: ^1.5.8
   xml:
   convert: ^3.1.0
   crypto: ^3.0.0
-  pointycastle: ^3.0.1
+  pointycastle: ^4.0.0
   pretty_qr_code: ^3.3.0
 
 
